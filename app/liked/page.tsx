@@ -6,12 +6,20 @@ import Header from "@/components/Header";
 import LikedContent from "./components/LikedContent";
 
 import { Song } from "@/types";
+import { useEffect, useState } from "react";
 
-interface LikedProps {
-  songs: Song[];
-}
 
-const Liked: React.FC<LikedProps> = ({ songs }) => {
+const Liked: React.FC = () => {
+  const [songs, setSongs] = useState<Song[]>([]);
+
+  useEffect(() => {
+    const fetchSongs = async () => {
+      const fetchedSongs = await getLikedSongs();
+      setSongs(fetchedSongs);
+    };
+
+    fetchSongs();
+  }, []);
   return (
     <div 
       className="
