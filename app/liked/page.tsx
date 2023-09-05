@@ -5,21 +5,11 @@ import Header from "@/components/Header";
 
 import LikedContent from "./components/LikedContent";
 
-import { Song } from "@/types";
-import { useEffect, useState } from "react";
+export const revalidate = 0;
 
+const Liked = async () => {
+  const songs = await getLikedSongs();
 
-const Liked: React.FC = () => {
-  const [songs, setSongs] = useState<Song[]>([]);
-
-  useEffect(() => {
-    const fetchSongs = async () => {
-      const fetchedSongs = await getLikedSongs();
-      setSongs(fetchedSongs);
-    };
-
-    fetchSongs();
-  }, []);
   return (
     <div 
       className="
@@ -69,7 +59,7 @@ const Liked: React.FC = () => {
           </div>
         </div>
       </Header>
-      <LikedContent songs={songs}/>
+      <LikedContent songs={songs} />
     </div>
   );
 }
