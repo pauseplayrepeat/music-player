@@ -5,6 +5,8 @@ import SearchInput from '@/components/SearchInput';
 import SpotifyAuthModal from './components/SpotifyAuthModal';
 import Button from '@/components/Button'; // Adjust this import based on your Button component's location.
 import useAuthModal from '@/hooks/useAuthModal';
+import SpotifyLoginButton from './components/SpotifyLoginButton';
+import SpotifySearchInput from './components/SpotifySearchInput'; // Make sure the path is correct.
 
 interface SearchProps {
     searchParams: {
@@ -25,6 +27,8 @@ const SpotifyPage = ({ searchParams }: SearchProps) => {
         ">
             <Header className="from-bg-neutral-900">
                 <div className="mb-2 flex flex-col gap-y-6">
+                    <SpotifyLoginButton />  {/* Here is the Spotify Login Button */}
+                    <SpotifySearchInput />  {/* Here is the Spotify Search Input */}
                     <SpotifyAuthModal />
                 </div>
             </Header>

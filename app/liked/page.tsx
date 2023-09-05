@@ -5,11 +5,13 @@ import Header from "@/components/Header";
 
 import LikedContent from "./components/LikedContent";
 
-export const revalidate = 0;
+import { Song } from "@/types";
 
-const Liked = async () => {
-  const songs = await getLikedSongs();
+interface LikedProps {
+  songs: Song[];
+}
 
+const Liked: React.FC<LikedProps> = ({ songs }) => {
   return (
     <div 
       className="
@@ -59,7 +61,7 @@ const Liked = async () => {
           </div>
         </div>
       </Header>
-      <LikedContent songs={songs} />
+      <LikedContent songs={songs}/>
     </div>
   );
 }

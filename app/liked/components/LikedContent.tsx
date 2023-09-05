@@ -19,6 +19,7 @@ const LikedContent: React.FC<LikedContentProps> = ({
 }) => {
   const router = useRouter();
   const { isLoading, user } = useUser();
+  
 
   const onPlay = useOnPlay(songs);
 
@@ -28,7 +29,7 @@ const LikedContent: React.FC<LikedContentProps> = ({
     }
   }, [isLoading, user, router]);
 
-  if (songs.length === 0) {
+  if (!songs || songs.length === 0) {
     return (
       <div 
         className="

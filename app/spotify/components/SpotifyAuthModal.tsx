@@ -1,7 +1,7 @@
 "use client";
 
 import Modal from "@/components/Modal";
-import useAuthModal from "@/hooks/useAuthModal";
+import useSpotifyAuthModal from "@/hooks/useSpotifyAuthModal";
 
 import { useSupabaseClient, useSessionContext } from "@supabase/auth-helpers-react";
 import { Auth } from "@supabase/auth-ui-react";
@@ -13,7 +13,7 @@ const SpotifyAuthModal = () => {
     const supabaseClient = useSupabaseClient();
     const router = useRouter();
     const { session } = useSessionContext();
-    const { onClose, isOpen } = useAuthModal();
+    const { onClose, isOpen } = useSpotifyAuthModal();
 
     useEffect(() => {
         if (session) {
@@ -28,34 +28,35 @@ const SpotifyAuthModal = () => {
         }
     }
 
-    return (
-        <Modal 
-            title="Welcome to Spotify"
-            description="Authorize to fetch your songs"
-            isOpen={isOpen}
-            onChange={onChange}
+  return (
+    <Modal 
+        title="Welcome back"
+        description="Log in to your Spotify account"
+        isOpen={isOpen}
+        onChange={onChange}
         >
-            <Auth 
-                theme="dark"
-                magicLink
-                providers={["spotify"]}  // Only include "spotify" as a provider
-                supabaseClient={supabaseClient}
-                appearance={
-                    {
-                        theme: ThemeSupa,
-                        variables: {
-                            default: {
-                                colors: {
-                                    brand: "#404040",
-                                    brandAccent: "#99d8f5"
-                                }
+        <Auth 
+            theme="dark"
+            magicLink
+            providers={["spotify"]} // change provider to 'spotify'
+            supabaseClient={supabaseClient}
+            appearance={
+                {
+                    theme: ThemeSupa,
+                    variables: {
+                        default: {
+                            colors: {
+                                brand: "#404040",
+                                brandAccent: "#99d8f5"
                             }
-                        }
                     }
                 }
-            />
-        </Modal>
-    )
+            }
+
+        }
+        />
+    </Modal>
+  )
 }
 
 export default SpotifyAuthModal;
