@@ -56,23 +56,32 @@ const Spotify = () => {
   const { user, isLoading } = useUser();
   const [accessToken, setAccessToken] = useState("");
   const authModal = useAuthModal();
+  const [showInAppBrowserMessage, setShowInAppBrowserMessage] = useState(false);
 
   const router = useRouter();
 
   useEffect(() => {
     function isInAppBrowser() {
       const userAgent = navigator.userAgent || navigator.vendor;
-      if (userAgent.includes('Instagram')) {
-        return true;
-      }
-      // Add checks for other in-app browsers if needed
-      return false;
+      return userAgent.includes('Instagram'); // Add more checks as needed
     }
 
     if (isInAppBrowser()) {
-      // Implement your logic here, e.g., show a message or redirect
+      // Show a message or modal to the user
+      setShowInAppBrowserMessage(true);
     }
   }, []);
+
+  if (showInAppBrowserMessage) {
+    // This is a simple implementation. Consider using a modal for a better user experience.
+    return (
+      <div style={{ padding: '20px', backgroundColor: 'lightgrey', textAlign: 'center' }}>
+        <h2>Please Open in Your Browser</h2>
+        <p>This application does not support in-app browsers. Please open this link in your default mobile browser.</p>
+        <button onClick={() => setShowInAppBrowserMessage(false)}>Close</button>
+      </div>
+    );
+  }
 
   useEffect(() => {
     // If not loading and no user, redirect to login page or show an appropriate message
