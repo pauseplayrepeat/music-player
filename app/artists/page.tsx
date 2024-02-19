@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { getArtistTrack } from "../api/spotify";
 // import styles from "@/styles/Artists.module.css";
 import SpotifyPlayerComponent from "../spotify/components/SpotifyPlayer";
@@ -74,6 +74,7 @@ export default function Artists() {
                           ? artist.album.images[1]?.url
                           : "http://www.listercarterhomes.com/wp-content/uploads/2013/11/dummy-image-square.jpg"
                       }
+                      alt="artist"
                     />
                     <p>{artist.name}</p>
                     <p>Track</p>
@@ -85,7 +86,7 @@ export default function Artists() {
         </div>
       </div>
 
-      {artistTracks.length ? (
+      {/* {artistTracks.length ? (
         <div className={styles.spotifyPlayer}>
           <SpotifyPlayerComponent
             playing={isPlaying}
@@ -95,7 +96,7 @@ export default function Artists() {
         </div>
       ) : (
         <></>
-      )}
+      )} */}
     </div>
   );
 }
