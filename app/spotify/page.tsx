@@ -45,8 +45,8 @@ import React, { useState, useEffect } from 'react';
 import TrackSearch from './components/TrackSearch';
 
 
-const CLIENT_ID = "eb50c2830540448d99e4f2342c2a8d87";
-const CLIENT_SECRET = "d344df747b684472b5de0b3c9d8e2175";
+const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID
+const CLIENT_SECRET = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET
 
 const Spotify = () => {
   const [accessToken, setAccessToken] = useState("");
