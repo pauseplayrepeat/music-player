@@ -71,7 +71,8 @@ const Sidebar: React.FC<SidebarProps> = ({children, spotifyTracks }) => {
                 </div>
             </Box>
             <Box className="overflow-y-auto h-full">
-                <Library spotifyTracks={spotifyTracks}/>
+                {/* <Library spotifyTracks={spotifyTracks}/> */}
+                <div></div>
             </Box>
         </div>
         <main className="h-full flex-1 overflow-y-auto py-2">
