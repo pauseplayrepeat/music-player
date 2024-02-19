@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
 import { HiHome } from 'react-icons/hi';
-import { BiSearch } from 'react-icons/bi';
+import { BiLogoSpotify, BiSearch } from 'react-icons/bi';
 import Button from './Button';
 import useAuthModal from '@/hooks/useAuthModal';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
@@ -81,6 +81,9 @@ const Header: React.FC<HeaderProps> = ({
         </button>
           <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
             <AiOutlinePlus className="text-black" size={20} onClick={uploadModal.onOpen} />
+          </button>
+        <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
+            <BiLogoSpotify className="text-black" size={20} onClick={() => router.push('/spotify')} />
           </button>
         </div>
         <div className="flex justify-between items-center gap-x-4">
