@@ -64,7 +64,7 @@ const ListItem: React.FC<ListItemProps> = ({
         flex
         items-center
         justify-center
-        bg-green-500
+        bg-[#99d8f5]
         p-4
         drop-shadow-md
         right-5
@@ -72,7 +72,7 @@ const ListItem: React.FC<ListItemProps> = ({
         hover:scale-100
         "
         >
-            <FaPlay className="text-black"/>
+            {/* <FaPlay className="text-black"/> */}
         </div>
     </button>
   )

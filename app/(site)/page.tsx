@@ -41,11 +41,11 @@ export default async function Home() {
               mt-4
             "
           >
-            <ListItem 
+            {/* <ListItem 
               name="Liked Songs" 
               image="/images/liked.png" 
               href="liked" 
-            />
+            /> */}
           </div>
         </div>
       </Header>
