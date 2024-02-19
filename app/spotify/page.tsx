@@ -86,7 +86,7 @@ const Spotify = () => {
               text-3xl 
               font-semibold
             ">
-              Welcome back
+              Search Spotify
           </h1>
           <div 
             className="
