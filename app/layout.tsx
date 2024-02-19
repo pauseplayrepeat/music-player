@@ -15,7 +15,7 @@ import './globals.css'
 const font = Figtree({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'PausePlayRepeat Music: Discover, Share, and Promote Music - A Community for Producers & Fans',
+  title: 'PausePlayRepeat Music: Discover, Share, and Promote Music',
   description: 'Join PausePlayRepeat Music, the ultimate music community app for producers and enthusiasts. Upload, discover fresh tunes, and engage with the music world like never before. Start promoting your music or explore new sounds today!',
 }
 
