@@ -16,14 +16,15 @@ import SidebarItem from "../components/SidebarItem"
 
 import Library from "../components/Library"
 
-import { Song } from "../types"
+import { Song, SpotifyTrack } from "../types"
 
 interface SidebarProps {
-    children: React.ReactNode
-    songs: Song[];
+    children: React.ReactNode;
+    // userSongs: Song[];
+    spotifyTracks: SpotifyTrack[];
 }
 
-const Sidebar: React.FC<SidebarProps> = ({children, songs }) => {
+const Sidebar: React.FC<SidebarProps> = ({children, spotifyTracks }) => {
     const pathname = usePathname();
 
     const routes = useMemo(() => {
@@ -70,7 +71,7 @@ const Sidebar: React.FC<SidebarProps> = ({children, songs }) => {
                 </div>
             </Box>
             <Box className="overflow-y-auto h-full">
-                <Library songs={songs}/>
+                <Library spotifyTracks={spotifyTracks}/>
             </Box>
         </div>
         <main className="h-full flex-1 overflow-y-auto py-2">

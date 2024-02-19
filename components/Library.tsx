@@ -13,13 +13,15 @@ import useUploadModal from '@/hooks/useUploadModal';
 
 import MediaItem from '@/components/MediaItem';
 
-import { Song } from '@/types'; 
+import { Song, SpotifyTrack } from '@/types'; 
+import SpotifyMediaItem from '@/app/spotify/components/SpotifyMediaItem';
 
 interface LibraryProps {
-    songs: Song[];
+    // userSongs: Song[];
+    spotifyTracks: SpotifyTrack[];
 }
 
-const Library: React.FC<LibraryProps> = ({ songs }) => {
+const Library: React.FC<LibraryProps> = ({ spotifyTracks }) => {
     const authModal = useAuthModal();
     const { user } = useUser();
     const uploadModal = useUploadModal();
@@ -69,12 +71,15 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
             mt-4
             px-3
         ">
-            {songs.map((item) => (
+            {/* {userSongs.map((item) => (
                 <MediaItem 
                     onClick={() => {}}
                     key={item.id}
                     data={item}
                 />
+            ))} */}
+            {spotifyTracks.map((track) => (
+                <SpotifyMediaItem key={track.id} data={track} user={user_id}/>
             ))}
         </div>
     </div>

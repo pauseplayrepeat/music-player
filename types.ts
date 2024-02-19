@@ -7,6 +7,9 @@ export interface Song {
     title: string;
     song_path: string;
     image_path: string;
+    name?: string; 
+    artist?: string;
+    artwork?: string;
 }
 
 export interface UserDetails {
@@ -61,3 +64,12 @@ export interface Subscription {
     trial_end?: string;
     prices?: Price;
 }
+
+export type SpotifyTrack = {
+    id: string;
+    track_url: string;
+    artist_name: string;
+    song_title: string;
+    song_artwork: string;
+    // Add any other fields that are stored in your spotify_tracks table
+};

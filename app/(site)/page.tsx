@@ -3,11 +3,15 @@ import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
 
 import PageContent from "./components/PageContent";
+import getSpotifyTracks from "@/actions/getSpotifyTracks";
+import SpotifyTrackItem from "../spotify/components/SpotifyTrackItem";
 
 export const revalidate = 0;
 
 export default async function Home() {
   const songs = await getSongs();
+  const spotifyTracks = await getSpotifyTracks();
+  console.log(spotifyTracks); // Add this line to check the spotifySongs array
 
   return (
     <div
@@ -55,7 +59,8 @@ export default async function Home() {
             Newest songs
           </h1>
         </div>
-        <PageContent songs={songs} />
+        <PageContent songs={songs} spotifyTracks={spotifyTracks} />
+        {/* <SpotifyTrackItem track={spotifyTracks[0]} /> */}
       </div>
     </div>
   )

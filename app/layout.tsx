@@ -11,6 +11,7 @@ import Player from '@/components/Player'
 import SpotifyAuthModal from './spotify/components/SpotifyAuthModal'
 
 import './globals.css'
+import getSpotifyTracksByUserId from '@/actions/getSpotifyTracksByUserId'
 
 const font = Figtree({ subsets: ['latin'] })
 
@@ -26,7 +27,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const userSongs = await getSongsByUserId();
+  // const userSongs = await getSongsByUserId();
+  const spotifyTracks = await getSpotifyTracksByUserId();
 
   return (
     <html lang="en">
@@ -37,7 +39,7 @@ export default async function RootLayout({
             <ModalProvider />
             <SpotifyProvider> {/* Include the SpotifyProvider here */}
               <SpotifyAuthModal /> {/* Include the SpotifyAuthModal here */}
-              <Sidebar songs={userSongs}>
+              <Sidebar spotifyTracks={spotifyTracks}>
                 {children}
               </Sidebar>
               <Player />
