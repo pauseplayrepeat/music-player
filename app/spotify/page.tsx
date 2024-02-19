@@ -44,13 +44,30 @@
 import React, { useState, useEffect } from 'react';
 import TrackSearch from './components/TrackSearch';
 import Header from '@/components/Header';
+import { useUser } from '@/hooks/useUser';
+import { useRouter } from 'next/navigation';
+import useAuthModal from '@/hooks/useAuthModal';
 
 
 const CLIENT_ID = "85af9b4344c144e193afe98b2d1c56bd"
 const CLIENT_SECRET = "3fa50e750b5c44c4b7eea23cc3d0c34b"
 
 const Spotify = () => {
+  const { user, isLoading } = useUser();
   const [accessToken, setAccessToken] = useState("");
+  const authModal = useAuthModal();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    // If not loading and no user, redirect to login page or show an appropriate message
+    if (!user) {
+      authModal.onOpen();
+    }
+  }, [user, isLoading, router]);
+
+  // If loading or no user, you can return a loading indicator or null to avoid flash of content
+  if (isLoading || !user) return <div>Loading...</div>;
 
   useEffect(() => {
     var authParameters = {
