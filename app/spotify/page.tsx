@@ -45,7 +45,7 @@ import React, { useState, useEffect } from 'react';
 import TrackSearch from './components/TrackSearch';
 import Header from '@/components/Header';
 import { useUser } from '@/hooks/useUser';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import useAuthModal from '@/hooks/useAuthModal';
 
 
@@ -67,7 +67,7 @@ const Spotify = () => {
   }, [user, isLoading, router]);
 
   // If loading or no user, you can return a loading indicator or null to avoid flash of content
-  if (isLoading || !user) return <div>Loading...</div>;
+  if (isLoading || !user) return redirect("/sign-in");
 
   useEffect(() => {
     var authParameters = {
