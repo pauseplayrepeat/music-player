@@ -73,17 +73,17 @@ const Header: React.FC<HeaderProps> = ({
         >
           <HiHome className="text-black" size={20} />
         </button>
-        <button 
+        {/* <button 
           className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition"
           onClick={() => router.push('/search')}
         >
           <BiSearch className="text-black" size={20} />
-        </button>
-          <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
+        </button> */}
+          {/* <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
             <AiOutlinePlus className="text-black" size={20} onClick={uploadModal.onOpen} />
-          </button>
+          </button> */}
         <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
-            <BiLogoSpotify className="text-black" size={20} onClick={() => router.push('/spotify')} />
+            <AiOutlinePlus className="text-black" size={20} onClick={() => router.push('/spotify')} />
           </button>
         </div>
         <div className="flex justify-between items-center gap-x-4">
