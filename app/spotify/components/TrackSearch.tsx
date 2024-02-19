@@ -12,6 +12,9 @@ import Image from 'next/image';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import PlayButton from '@/components/PlayButton';
+import { supabase } from '@supabase/auth-ui-shared';
+import { SupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
 
 
 type Track = {
@@ -41,9 +44,28 @@ const TrackSearch = ({ accessToken }: { accessToken: string }) => {
         // },
     });
 
-    const handleAddTrack = async (trackUrl: string, trackName: string, artistName: string, albumImage: string) => {
-        await axios.post('/api/music/sharedTracks', { trackUrl, trackName, artistName, albumImage });
-        // toast.success("Track added successfully")
+    const supabaseClient = useSupabaseClient();
+
+    const handleAddTrack = async (event: React.MouseEvent<HTMLButtonElement>, trackUrl: string, songTitle: string, artistName: string, songArtwork: string) => {
+        event.stopPropagation();
+        const { data, error } = await supabaseClient
+            .from('spotify_tracks')
+            .insert([
+                { 
+                    track_url: trackUrl, 
+                    artist_name: artistName, 
+                    song_title: songTitle,
+                    song_artwork: songArtwork // Ensure this column exists in your Supabase table
+                }
+            ]);
+    
+        if (error) {
+            console.error("Error adding track:", error);
+            // Optionally, show an error message to the user
+        } else {
+            console.log("Track added successfully:", data);
+            // Optionally, show a success message to the user
+        }
     };
 
     const searchTracks = async (values: z.infer<typeof formSchema>) => {
@@ -86,10 +108,13 @@ const TrackSearch = ({ accessToken }: { accessToken: string }) => {
                             <p className="text-neutral-400 text-sm pb-4 w-full truncate">
                                 by {track.artists[0].name}
                             </p>
-                            {/* <div className="absolute bottom-24 right-5">
-                                <PlayButton />
-                            </div> */}
-                        </div>
+</div>
+<Button
+  onClick={(event) => handleAddTrack(event, track.external_urls.spotify, track.name, track.artists[0].name, track.album.images[0]?.url || '/default/artwork/path')}
+  className="add-button"
+>
+  Add
+</Button>
                     </div>
                 ))}
             </div>
