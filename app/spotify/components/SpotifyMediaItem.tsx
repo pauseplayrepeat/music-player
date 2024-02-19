@@ -5,12 +5,13 @@ import { SpotifyTrack } from "@/types";
 import usePlayer from "@/hooks/usePlayer";
 
 interface SpotifyMediaItemProps {
-  data: SpotifyTrack;
-//   onClick?: (id: string) => void;
-}
+    data: SpotifyTrack;
+    // user?: any; // Consider using a more specific type instead of `any` if possible
+  }
 
 const SpotifyMediaItem: React.FC<SpotifyMediaItemProps> = ({
   data,
+//   user,
 //   onClick,
 }) => {
 //   const player = usePlayer();

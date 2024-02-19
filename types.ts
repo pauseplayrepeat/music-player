@@ -71,5 +71,6 @@ export type SpotifyTrack = {
     artist_name: string;
     song_title: string;
     song_artwork: string;
+    user_id?: any; // Consider using a more specific type instead of `any` if possible
     // Add any other fields that are stored in your spotify_tracks table
 };

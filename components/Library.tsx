@@ -79,7 +79,7 @@ const Library: React.FC<LibraryProps> = ({ spotifyTracks }) => {
                 />
             ))} */}
             {spotifyTracks.map((track) => (
-                <SpotifyMediaItem key={track.id} data={track} user={user_id}/>
+                <SpotifyMediaItem key={track.id} data={track} />
             ))}
         </div>
     </div>
