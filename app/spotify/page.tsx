@@ -60,6 +60,21 @@ const Spotify = () => {
   const router = useRouter();
 
   useEffect(() => {
+    function isInAppBrowser() {
+      const userAgent = navigator.userAgent || navigator.vendor;
+      if (userAgent.includes('Instagram')) {
+        return true;
+      }
+      // Add checks for other in-app browsers if needed
+      return false;
+    }
+
+    if (isInAppBrowser()) {
+      // Implement your logic here, e.g., show a message or redirect
+    }
+  }, []);
+
+  useEffect(() => {
     // If not loading and no user, redirect to login page or show an appropriate message
     if (!user) {
       authModal.onOpen();
