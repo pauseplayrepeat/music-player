@@ -1,21 +1,44 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { SpotifyTrack } from "@/types";
 import Image from "next/image";
+import { SessionContext, useSessionContext } from "@supabase/auth-helpers-react";
 
 interface SpotifyTrackItemProps {
     track: SpotifyTrack; // Indicate that track can be null
 }
 
 const SpotifyTrackItem: React.FC<SpotifyTrackItemProps> = ({ track }) => {
+    const { supabaseClient } = useSessionContext();
+
     // Check if track is defined before attempting to access its properties
     if (!track) {
         return <div>No track data</div>;
     }
-
+ 
     // Function to handle click event
-    const handleClick = () => {
+    const handleClick = async () => {
         // Ensure track_url is not null or undefined before attempting to redirect
         if (track.track_url) {
+            // Increment click_count in the database
+            try {
+                const { data, error: fetchError } = await supabaseClient
+                    .from('spotify_tracks')
+                    .select('click_count')
+                    .eq('id', track.id)
+                    .single();
+            
+                if (fetchError) throw fetchError;
+            
+                const { error: updateError } = await supabaseClient
+                    .from('spotify_tracks')
+                    .update({ click_count: (data.click_count + 1) })
+                    .match({ id: track.id });
+            
+                if (updateError) throw updateError;
+            } catch (error) {
+                console.error('Error incrementing click count:', error);
+            }
+
             window.location.href = track.track_url; // Redirect to the track URL
         }
     };
