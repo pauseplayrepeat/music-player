@@ -78,24 +78,24 @@ const TrackSearch = ({ accessToken }: { accessToken: string }) => {
                 <p>Enter your search query.</p>
                 <Button type="submit">Search</Button>
             </form>
-            <div className="grid grid-cols-4 gap-4">
-                {tracks.map(track => (
-                    <div key={track.id} className="relative flex group flex-col items-center justify-center rounded-md overflow-hidden gap-x-4 bg-neutral-400/5 cursor-pointer hover:bg-neutral-400/10 transition p-3">
-                        <div className="relative aspect-square w-full h-full rounded-md overflow-hidden">
-                            <Image src={track.album.images[0]?.url || '/images/liked.png'} fill alt={track.name} />
-                        </div>
-                        <div className="flex flex-col items-start w-full pt-4 gap-y-1">
-                            <p className="font-semibold truncate w-full">{track.name}</p>
-                            <p className="text-neutral-400 text-sm pb-4 w-full truncate">by {track.artists[0].name}</p>
-                        </div>
-                        <Button onClick={(event) => handleAddTrack(event, track.external_urls.spotify, track.name, track.artists[0].name, track.album.images[0]?.url || '/default/artwork/path')}
-  className="add-button"
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+    {tracks.map(track => (
+        <div key={track.id} className="relative flex group flex-col items-center justify-center rounded-md overflow-hidden gap-x-4 bg-neutral-400/5 cursor-pointer hover:bg-neutral-400/10 transition p-3">
+            <div className="relative aspect-square w-full h-full rounded-md overflow-hidden">
+                <Image src={track.album.images[0]?.url || '/images/liked.png'} fill alt={track.name} />
+            </div>
+            <div className="flex flex-col items-start w-full pt-4 gap-y-1">
+                <p className="font-semibold truncate w-full">{track.name}</p>
+                <p className="text-neutral-400 text-sm pb-4 w-full truncate">by {track.artists[0].name}</p>
+            </div>
+            <Button onClick={(event) => handleAddTrack(event, track.external_urls.spotify, track.name, track.artists[0].name, track.album.images[0]?.url || '/default/artwork/path')}
+className="add-button"
 >
   Add
 </Button>
-                    </div>
-                ))}
-            </div>
+        </div>
+    ))}
+</div>
         </div>
     );
 };
