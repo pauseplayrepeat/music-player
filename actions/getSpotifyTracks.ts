@@ -8,12 +8,13 @@ const getSpotifyTracks = async (): Promise<SpotifyTrack[]> => {
         cookies: cookies,
     });
 
-    const { data, error } = await supabase.from('spotify_tracks').select('*');
-if (error) {
-    console.error(error);
-    return [];
-}
-return data;
+    // Added click_count to the select and sorted by click_count in ascending order
+    const { data, error } = await supabase.from('spotify_tracks').select('*').order('click_count', { ascending: false });
+    if (error) {
+        console.error(error);
+        return [];
+    }
+    return data;
 };
 
 export default getSpotifyTracks;
