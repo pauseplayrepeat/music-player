@@ -18,6 +18,7 @@ import Library from "../components/Library"
 
 import { Song, SpotifyTrack } from "../types"
 import { AiOutlinePlus } from 'react-icons/ai';
+import { TbDashboard } from 'react-icons/tb';
 
 interface SidebarProps {
     children: React.ReactNode;
@@ -33,7 +34,7 @@ const Sidebar: React.FC<SidebarProps> = ({children, spotifyTracks }) => {
             {
                 icon: HiHome,
                 label: 'Home',
-                active: pathname !== '/search',
+                active: pathname === '/',
                 href : '/',
             },
             // {
@@ -47,6 +48,12 @@ const Sidebar: React.FC<SidebarProps> = ({children, spotifyTracks }) => {
                 label: 'Add Spotify Songs',
                 active: pathname === '/spotify',
                 href : '/spotify',
+            },
+            {
+                icon: TbDashboard,
+                label: 'Dashboard',
+                active: pathname === '/dashboard',
+                href : '/dashboard',
             }
         ]
     }, [pathname]);

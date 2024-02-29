@@ -1,5 +1,6 @@
+import { SpotifyTrack } from "@/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { SpotifyTrack } from "../types"; // Ensure this type matches the structure of your spotify_tracks table
+
 import { cookies } from "next/headers";
 
 const getSpotifyTracksByUserId = async (): Promise<SpotifyTrack[]> => {
@@ -18,16 +19,16 @@ const getSpotifyTracksByUserId = async (): Promise<SpotifyTrack[]> => {
     }
 
     const { data, error } = await supabase
-        .from("spotify_tracks") // Target the spotify_tracks table
+        .from("spotify_tracks") // Changed to target the 'spotify_tracks' table
         .select("*")
-        .eq("user_id", sessionData.session?.user.id) // Ensure you have a user_id column in spotify_tracks
-        .order("created_at", { ascending: false }); // Adjust if your table has a different timestamp column
+        .eq("user_id", sessionData.session?.user.id) // Assuming 'spotify_tracks' also has a 'user_id' column
+        // .order("created_at", { ascending: false }); // Assuming 'spotify_tracks' has a 'created_at' column
 
     if (error) {
         console.log(error.message);
         return [];
     }
-    return data || [];
+    return data || []; // Assuming 'data' is already of type SpotifyTrack[]
 };
 
 export default getSpotifyTracksByUserId;
