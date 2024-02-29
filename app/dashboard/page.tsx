@@ -21,7 +21,6 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ spotifyTracks }) => {
         xl:grid-cols-5 
         2xl:grid-cols-8 
         gap-4 
-
       "
     >
       {/* <EmailButton /> */}
@@ -30,4 +29,4 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ spotifyTracks }) => {
   );
 };
 
-export default DashboardPage;
+export default DashboardPage; // Make sure to export DashboardPage as default
