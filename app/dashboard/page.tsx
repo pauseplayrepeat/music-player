@@ -9,7 +9,7 @@ interface DashboardPageProps {
   spotifyTracks: SpotifyTrack[];
 }
 
-const DashboardPage = ({ 
+const Dashboard = ({ 
     spotifyTracks,
 }: DashboardPageProps) => {
   return (
@@ -31,4 +31,4 @@ const DashboardPage = ({
   );
 };
 
-export default DashboardPage; // Make sure to export DashboardPage as default
+export default Dashboard; 
