@@ -8,7 +8,7 @@ interface SpotifyTrackListProps {
     tracks: SpotifyTrack[];
 }
 
-const SpotifyTrackList: React.FC<SpotifyTrackListProps> = async ({ tracks }) => {
+const SpotifyTrackList = async ({ }) => {
   const spotifyTracks: SpotifyTrack[] = await getSpotifyTracksByUserId();
 
   return (

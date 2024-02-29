@@ -5,13 +5,13 @@ import SpotifyTrackList from './components/SpotifyTrackList';
 import getSpotifyTracksByUserId from '@/actions/getSpotifyTracksByUserId';
 import { SpotifyTrack } from '@/types';
 
-interface DashboardPageProps {
-  spotifyTracks: SpotifyTrack[];
-}
+// interface DashboardPageProps {
+//   spotifyTracks: SpotifyTrack[];
+// }
 
 const Dashboard = ({ 
-    spotifyTracks,
-}: DashboardPageProps) => {
+    // spotifyTracks,
+}) => {
   return (
     <div 
       className="
@@ -26,9 +26,9 @@ const Dashboard = ({
       "
     >
       {/* <EmailButton /> */}
-      <SpotifyTrackList tracks={spotifyTracks} />
+      <SpotifyTrackList />
     </div>
   );
 };
 
-export default Dashboard; 
+export default Dashboard; // Make sure to export Dashboard as default
