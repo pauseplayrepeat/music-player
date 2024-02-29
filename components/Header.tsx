@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
-import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
+import { RxCaretLeft, RxCaretRight, RxDashboard } from 'react-icons/rx';
 import { HiHome } from 'react-icons/hi';
 import { BiLogoSpotify, BiSearch } from 'react-icons/bi';
 import Button from './Button';
@@ -84,6 +84,9 @@ const Header: React.FC<HeaderProps> = ({
           </button> */}
         <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
             <AiOutlinePlus className="text-black" size={20} onClick={() => router.push('/spotify')} />
+          </button>
+          <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
+            <RxDashboard className="text-black" size={20} onClick={() => router.push('/dashboard')} />
           </button>
         </div>
         <div className="flex justify-between items-center gap-x-4">

@@ -3,6 +3,8 @@ import { SpotifyTrack } from "../types";
 import { cookies } from "next/headers";
 
 const fetchTrackById = async (id: string): Promise<SpotifyTrack | null> => {
+    console.log(`Fetching track with id: ${id}`); // Log the id parameter
+
     const supabase = createServerComponentClient({
         cookies: cookies,
     });
@@ -12,6 +14,9 @@ const fetchTrackById = async (id: string): Promise<SpotifyTrack | null> => {
     .select('*')
     .eq('id', id)
     .single();
+
+  console.log(`Fetched data: ${JSON.stringify(data)}`); // Log the fetched data
+  console.log(`Fetched error: ${JSON.stringify(error)}`); // Log the fetched error
 
   if (error) {
     console.error('Error fetching track:', error);

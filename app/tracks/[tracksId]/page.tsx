@@ -1,37 +1,77 @@
-"use client"
+import getSongs from "@/actions/getSongs";
+import Header from "@/components/Header";
+import ListItem from "@/components/ListItem";
 
-import { SpotifyTrack } from "@/types";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import fetchTrackById from '@/actions/getSpotifyTracksByTrackId';
+import getSpotifyTracks from "@/actions/getSpotifyTracks";
+import TrackIdPageContent from "../components/TrackIdPageContent";
+import fetchTrackById from "@/actions/getSpotifyTracksByTrackId";
 
-const TrackPage = () => {
-  const router = useRouter();
-  const { tracksId } = useParams();
+import { useParams } from "next/navigation";
 
-  const [track, setTrack] = useState<SpotifyTrack | null>(null);
-  
+export const revalidate = 0;
 
-  // useEffect(() => {
-  //   if (tracksId) {
-  //     fetchTrackById(tra as string).then(setTrack);
-  //   }
-  // }, [tracksId]);
+export default async function Home() {
+  const params = useParams<{ tracksId: string }>();
+  const { tracksId } = params;
 
-  // Render track data her
+  if (typeof tracksId !== 'string') {
+    // Handle the case where tracksId is not a string
+    console.error('tracksId is not a string:', tracksId);
+    return;
+  }
+
+  const spotifyTrack = await fetchTrackById(tracksId);
+  const spotifyTracks = spotifyTrack ? [spotifyTrack] : [];
+
   return (
-    <div>
-      {track ? (
-        <>
-          <h1>{track.song_title}</h1>
-          <p>{track.artist_name}</p>
-          {/* Render other track data as needed */}
-        </>
-      ) : (
-        <p>Loading...</p>
-      )}
+    <div
+      className="
+        bg-neutral-900 
+        rounded-lg 
+        h-full 
+        w-full 
+        overflow-hidden 
+        overflow-y-auto
+      "
+    >
+      <Header>
+        <div className="mb-2">
+          <h1 
+            className="
+            text-white 
+              text-3xl 
+              font-semibold
+            ">
+              Welcome back
+          </h1>
+          <div 
+            className="
+              grid 
+              grid-cols-1 
+              sm:grid-cols-2 
+              xl:grid-cols-3 
+              2xl:grid-cols-4 
+              gap-3 
+              mt-4
+            "
+          >
+            {/* <ListItem 
+              name="Liked Songs" 
+              image="/images/liked.png" 
+              href="liked" 
+            /> */}
+          </div>
+        </div>
+      </Header>
+      <div className="mt-2 mb-7 px-6">
+        <div className="flex justify-between items-center">
+          <h1 className="text-white text-2xl font-semibold">
+            Newest songs
+          </h1>
+        </div>
+        <TrackIdPageContent spotifyTracks={spotifyTracks} />
+        {/* <SpotifyTrackItem track={spotifyTracks[0]} /> */}
+      </div>
     </div>
-  );
-};
-
-export default TrackPage;
+  )
+}
