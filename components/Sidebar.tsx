@@ -18,7 +18,8 @@ import Library from "../components/Library"
 
 import { Song, SpotifyTrack } from "../types"
 import { AiOutlinePlus } from 'react-icons/ai';
-import { TbDashboard } from 'react-icons/tb';
+import { TbBuildingCommunity, TbDashboard } from 'react-icons/tb';
+import { RxDashboard } from 'react-icons/rx';
 
 interface SidebarProps {
     children: React.ReactNode;
@@ -44,23 +45,29 @@ const Sidebar: React.FC<SidebarProps> = ({children, spotifyTracks }) => {
             //     href : '/search',
             // },
             {
+                icon: RxDashboard,
+                label: 'Dashboard',
+                active: pathname === '/dashboard',
+                href : '/dashboard',
+            },
+            {
                 icon: AiOutlinePlus,
                 label: 'Add Spotify Songs',
                 active: pathname === '/spotify',
                 href : '/spotify',
             },
             {
-                icon: TbDashboard,
-                label: 'Dashboard',
-                active: pathname === '/dashboard',
-                href : '/dashboard',
+                icon: TbBuildingCommunity,
+                label: 'Community',
+                // active: pathname === '/dashboard',
+                href : 'https://discord.gg/pauseplayrepeat',
             }
         ]
     }, [pathname]);
 
   return (
     <div className="flex h-full">
-        <div className="hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] text-white p-2">
+        <div className="hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] text-white p-2 overflow-y-auto">
             <Box>
                 <div className="
                 flex
