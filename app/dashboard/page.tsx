@@ -9,7 +9,9 @@ interface DashboardPageProps {
   spotifyTracks: SpotifyTrack[];
 }
 
-const DashboardPage: React.FC<DashboardPageProps> = ({ spotifyTracks }) => {
+const DashboardPage = ({ 
+    spotifyTracks,
+}: DashboardPageProps) => {
   return (
     <div 
       className="
