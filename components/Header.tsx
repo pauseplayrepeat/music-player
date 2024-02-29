@@ -14,6 +14,7 @@ import { toast } from 'react-hot-toast';
 import UploadModal from './UploadModal';
 import useUploadModal from '@/hooks/useUploadModal';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { TbBuildingCommunity } from 'react-icons/tb';
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -82,11 +83,14 @@ const Header: React.FC<HeaderProps> = ({
           {/* <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
             <AiOutlinePlus className="text-black" size={20} onClick={uploadModal.onOpen} />
           </button> */}
-        <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
+          <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
+            <RxDashboard className="text-black" size={20} onClick={() => router.push('/dashboard')} />
+          </button>
+          <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
             <AiOutlinePlus className="text-black" size={20} onClick={() => router.push('/spotify')} />
           </button>
           <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
-            <RxDashboard className="text-black" size={20} onClick={() => router.push('/dashboard')} />
+            <TbBuildingCommunity className="text-black" size={20} onClick={() => router.push('https://discord.gg/pauseplayrepeat')} />
           </button>
         </div>
         <div className="flex justify-between items-center gap-x-4">
