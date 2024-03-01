@@ -6,11 +6,11 @@ import SpotifyTrackItem from "@/app/spotify/components/SpotifyTrackItem";
 import fetchTrackById from "@/actions/getSpotifyTracksByTrackId";
 import { useEffect, useState } from 'react';
 
-interface TrackIdPageContentProps {
-  spotifyTracks: SpotifyTrack[];
-}
+// interface TrackIdPageContentProps {
+//   spotifyTracks: SpotifyTrack[];
+// }
 
-const TrackIdPageContent: React.FC<TrackIdPageContentProps> = () => {
+const TrackIdPageContent = () => {
   const params = useParams<{ tracksId: string }>();
   const { tracksId } = params;
 

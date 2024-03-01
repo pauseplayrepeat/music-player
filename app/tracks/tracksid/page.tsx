@@ -12,11 +12,11 @@ import { SpotifyTrack } from "@/types";
 
 export const revalidate = 0;
 
-interface TracksIdPageProps {
-  spotifyTracks: SpotifyTrack[]
-}
+// interface TracksIdPageProps {
+//   spotifyTracks: SpotifyTrack[]
+// }
 
-const TracksIdPage = ({ spotifyTracks }: TracksIdPageProps) => {
+const TracksIdPage = ({ }) => {
   // const params = useParams<{ tracksId: string }>();
   // const { tracksId } = params;
 
@@ -75,7 +75,7 @@ const TracksIdPage = ({ spotifyTracks }: TracksIdPageProps) => {
             Your songs
           </h1>
         </div>
-        <TrackIdPageContent spotifyTracks={spotifyTracks} />
+        <TrackIdPageContent />
         {/* <SpotifyTrackItem track={spotifyTracks[0]} /> */}
       </div>
     </div>
