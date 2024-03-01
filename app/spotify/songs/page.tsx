@@ -42,7 +42,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-import TrackSearch from './components/TrackSearch';
+import TrackSearch from '../components/TrackSearch';
 import Header from '@/components/Header';
 import { useUser } from '@/hooks/useUser';
 import { redirect, useRouter } from 'next/navigation';
@@ -127,7 +127,7 @@ const Spotify = () => {
               text-3xl 
               font-semibold
             ">
-              Search Spotify
+              Search Spotify Songs
           </h1>
           <div 
             className="
@@ -148,6 +148,6 @@ const Spotify = () => {
     </div>
     </div>
   );
-};3
+};
 
 export default Spotify;

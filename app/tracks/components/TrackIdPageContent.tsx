@@ -1,27 +1,34 @@
 "use client";
 
-import { Song, SpotifyTrack } from "@/types";
-import useOnPlay from "@/hooks/useOnPlay";
-import SongItem from "@/components/SongItem";
+import { useParams } from 'next/navigation';
+import { SpotifyTrack } from "@/types";
 import SpotifyTrackItem from "@/app/spotify/components/SpotifyTrackItem";
-
+import fetchTrackById from "@/actions/getSpotifyTracksByTrackId";
+import { useEffect, useState } from 'react';
 
 interface TrackIdPageContentProps {
-//   songs: Song[];
-  spotifyTracks: SpotifyTrack[]; // Add this line
+  spotifyTracks: SpotifyTrack[];
 }
 
-const TrackIdPageContent: React.FC<TrackIdPageContentProps> = ({
-  spotifyTracks, // Add this line
-}) => {
+const TrackIdPageContent: React.FC<TrackIdPageContentProps> = () => {
+  const params = useParams<{ tracksId: string }>();
+  const { tracksId } = params;
 
-  // if (songs.length === 0 && spotifySongs.length === 0) { // Update this condition
-  //   return (
-  //     <div className="mt-4 text-neutral-400">
-  //       No songs available.
-  //     </div>
-  //   );
-  // }
+  if (typeof tracksId !== 'string') {
+    console.error('tracksId is not a string:', tracksId);
+    return null;
+  }
+
+  // const [spotifyTracks, setSpotifyTracks] = useState<SpotifyTrack[]>([]);
+
+  // useEffect(() => {
+  //   const fetchTrack = async () => {
+  //     const spotifyTrack = await fetchTrackById(tracksId);
+  //     setSpotifyTracks(spotifyTrack ? [spotifyTrack] : []);
+  //   };
+
+  //   fetchTrack();
+  // }, [tracksId]);
 
   return (
     <div 
@@ -37,16 +44,9 @@ const TrackIdPageContent: React.FC<TrackIdPageContentProps> = ({
         mt-4
       "
     >
-      {/* {songs.map((item) => (
-        <SongItem 
-          onClick={(id: string) => onPlay(id)} 
-          key={item.id} 
-          data={item}
-        />
+      {/* {spotifyTracks.map((track) => (
+        <SpotifyTrackItem key={track.id} track={track} />
       ))} */}
-      {spotifyTracks.map((track) => (
-  <SpotifyTrackItem key={track.id} track={track} />
-))}
     </div>
   );
 }

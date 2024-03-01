@@ -8,7 +8,7 @@ import React from 'react'
 
 import { HiHome } from 'react-icons/hi';
 
-import { BiLogoSpotify, BiPlusCircle, BiSearch } from 'react-icons/bi';
+import { BiLogoSpotify, BiMusic, BiPlusCircle, BiSearch } from 'react-icons/bi';
 
 import Box from "../components/Box"
 
@@ -20,6 +20,7 @@ import { Song, SpotifyTrack } from "../types"
 import { AiOutlinePlus } from 'react-icons/ai';
 import { TbBuildingCommunity, TbDashboard } from 'react-icons/tb';
 import { RxDashboard } from 'react-icons/rx';
+import { BsMusicNoteList } from 'react-icons/bs';
 
 interface SidebarProps {
     children: React.ReactNode;
@@ -51,10 +52,16 @@ const Sidebar: React.FC<SidebarProps> = ({children, spotifyTracks }) => {
                 href : '/dashboard',
             },
             {
-                icon: AiOutlinePlus,
+                icon: BiMusic,
                 label: 'Add Spotify Songs',
-                active: pathname === '/spotify',
-                href : '/spotify',
+                active: pathname === '/spotify/songs',
+                href : '/spotify/songs',
+            },
+            {
+                icon: BsMusicNoteList,
+                label: 'Add Spotify Playlists',
+                active: pathname === '/spotify/playlists',
+                href : '/spotify/playlists',
             },
             {
                 icon: TbBuildingCommunity,

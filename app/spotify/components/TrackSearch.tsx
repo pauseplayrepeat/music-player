@@ -39,6 +39,26 @@ const TrackSearch = ({ accessToken }: { accessToken: string }) => {
             console.error("User not authenticated");
             return;
         }
+    
+        // Check if the spotify_url already exists in the table
+        const { data: existingTracks, error: selectError } = await supabaseClient
+            .from('spotify_tracks')
+            .select('track_url')
+            .eq('track_url', trackUrl);
+    
+        if (selectError) {
+            console.error("Error checking track:", selectError);
+            toast.error("Error checking track");
+            return;
+        }
+    
+        if (existingTracks && existingTracks.length > 0) {
+            console.log("Track already exists");
+            toast.error("Track already exists");
+            return;
+        }
+    
+        // If the spotify_url does not exist, add the new track
         const { data, error } = await supabaseClient
             .from('spotify_tracks')
             .insert([

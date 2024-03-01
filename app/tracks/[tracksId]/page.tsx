@@ -1,3 +1,4 @@
+
 import getSongs from "@/actions/getSongs";
 import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
@@ -7,21 +8,28 @@ import TrackIdPageContent from "../components/TrackIdPageContent";
 import fetchTrackById from "@/actions/getSpotifyTracksByTrackId";
 
 import { useParams } from "next/navigation";
+import { SpotifyTrack } from "@/types";
 
 export const revalidate = 0;
 
-export default async function Home() {
-  const params = useParams<{ tracksId: string }>();
-  const { tracksId } = params;
+interface TracksIdPageProps {
+  spotifyTracks: SpotifyTrack[]
+}
 
-  if (typeof tracksId !== 'string') {
-    // Handle the case where tracksId is not a string
-    console.error('tracksId is not a string:', tracksId);
-    return;
-  }
+export default async function Home({
+  spotifyTracks,
+}: TracksIdPageProps) {
+  // const params = useParams<{ tracksId: string }>();
+  // const { tracksId } = params;
 
-  const spotifyTrack = await fetchTrackById(tracksId);
-  const spotifyTracks = spotifyTrack ? [spotifyTrack] : [];
+  // if (typeof tracksId !== 'string') {
+  //   // Handle the case where tracksId is not a string
+  //   console.error('tracksId is not a string:', tracksId);
+  //   return;
+  // }
+
+  // const spotifyTrack = await fetchTrackById(tracksId);
+  // const spotifyTracks = spotifyTrack ? [spotifyTrack] : [];
 
   return (
     <div
@@ -66,7 +74,7 @@ export default async function Home() {
       <div className="mt-2 mb-7 px-6">
         <div className="flex justify-between items-center">
           <h1 className="text-white text-2xl font-semibold">
-            Newest songs
+            Your songs
           </h1>
         </div>
         <TrackIdPageContent spotifyTracks={spotifyTracks} />
