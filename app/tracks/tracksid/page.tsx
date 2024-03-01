@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
 
 import getSpotifyTracks from "@/actions/getSpotifyTracks";
-import TrackIdPageContent from "../components/TrackIdPageContent";
+import TrackIdPageContent from "./components/TrackIdPageContent";
 import fetchTrackById from "@/actions/getSpotifyTracksByTrackId";
 
 import { useParams } from "next/navigation";
