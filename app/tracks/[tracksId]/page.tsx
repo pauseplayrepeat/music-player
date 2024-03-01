@@ -16,9 +16,7 @@ interface TracksIdPageProps {
   spotifyTracks: SpotifyTrack[]
 }
 
-export default async function Home({
-  spotifyTracks,
-}: TracksIdPageProps) {
+const TracksIdPage = async ({ spotifyTracks }: TracksIdPageProps) => {
   // const params = useParams<{ tracksId: string }>();
   // const { tracksId } = params;
 
@@ -83,3 +81,5 @@ export default async function Home({
     </div>
   )
 }
+
+export default TracksIdPage;
