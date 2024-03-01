@@ -99,7 +99,7 @@ const PlaylistSearch = ({ accessToken }: { accessToken: string }) => {
     };
 
     const searchPlaylists = async (values: z.infer<typeof formSchema>) => {
-        const searchResponse = await fetch(`https://api.spotify.com/v1/search?type=playlist&q=${values.searchInput}`, {
+        const searchResponse = await fetch(`https://api.spotify.com/v1/search?type=playlist&q=${values.searchInput}&limit=50`, {
           headers: {
             'Authorization': `Bearer ${accessToken}`
           }
@@ -116,7 +116,7 @@ const PlaylistSearch = ({ accessToken }: { accessToken: string }) => {
                 <p>Enter your search query.</p>
                 <Button type="submit">Search</Button>
             </form>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 {playlists.map(playlist => (
                        <div key={playlist.id} className="relative flex group flex-col items-center justify-center rounded-md overflow-hidden gap-x-4 bg-neutral-400/5 cursor-pointer hover:bg-neutral-400/10 transition p-3">
                            <div className="relative aspect-square w-full h-full rounded-md overflow-hidden">

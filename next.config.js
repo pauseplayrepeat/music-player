@@ -8,6 +8,8 @@ const nextConfig = {
       "image-cdn-ak.spotifycdn.com",
       "seed-mix-image.spotifycdn.com",
       "mosaic.scdn.co",
+      "thisis-images.spotifycdn.com",
+      "seeded-session-images.scdn.co",
     ],
   },
 };
