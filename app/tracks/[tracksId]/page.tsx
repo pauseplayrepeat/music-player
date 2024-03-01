@@ -16,7 +16,7 @@ interface TracksIdPageProps {
   spotifyTracks: SpotifyTrack[]
 }
 
-const TracksIdPage = async ({ spotifyTracks }: TracksIdPageProps) => {
+const TracksIdPage = ({ spotifyTracks }: TracksIdPageProps) => {
   // const params = useParams<{ tracksId: string }>();
   // const { tracksId } = params;
 
