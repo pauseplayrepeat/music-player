@@ -74,3 +74,27 @@ export type SpotifyTrack = {
     user_id?: any; // Consider using a more specific type instead of `any` if possible
     // Add any other fields that are stored in your spotify_tracks table
 };
+
+export type SpotifyPlaylist = {
+        collaborative: boolean;
+        description: string;
+        external_urls: { spotify: string };
+        href: string;
+        id: string;
+        images: { url: string }[];
+        name: string;
+        owner: {
+          external_urls: { spotify: string };
+          href: string;
+          id: string;
+          type: string;
+          uri: string;
+          display_name: string;
+        };
+        public: boolean;
+        snapshot_id: string;
+        tracks: {
+          href: string;
+          total: number;
+        };
+}
