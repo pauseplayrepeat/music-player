@@ -1,7 +1,9 @@
 "use client";
+import Button from "@/components/Button";
 import Header from "@/components/Header";
 import { SparklesCore } from "@/components/ui/sparkles";
 import React from "react";
+import Link from "next/link";
 
 
 const SparklesPreview = () => {
@@ -55,6 +57,11 @@ const SparklesPreview = () => {
       <p className="text-center text-white relative mt-8 text-xl">
       Pauseplayrepeat is more than just a music app – it's a thriving community where artists and fans connect through the universal language of music.
       </p>
+      <Button className="w-auto mt-4 z-20">
+        <Link href="/music">
+            View our Collection
+        </Link>
+      </Button>
     </div>
     </>
   );
