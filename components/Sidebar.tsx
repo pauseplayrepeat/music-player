@@ -52,6 +52,12 @@ const Sidebar: React.FC<SidebarProps> = ({children, spotifyTracks }) => {
                 href : '/dashboard',
             },
             {
+                icon: BiMusic,
+                label: 'Music',
+                active: pathname === '/music',
+                href : '/music',
+            },
+            {
                 icon: TbPlaylist,
                 label: 'Playlists',
                 active: pathname === '/playlists',

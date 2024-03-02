@@ -5,6 +5,8 @@ import ListItem from "@/components/ListItem";
 import PageContent from "./components/PageContent";
 import getSpotifyTracks from "@/actions/getSpotifyTracks";
 import SpotifyTrackItem from "../spotify/components/SpotifyTrackItem";
+import Button from "@/components/Button";
+import Link from "next/link";
 
 export const revalidate = 0;
 
@@ -31,7 +33,7 @@ export default async function Home() {
               text-3xl 
               font-semibold
             ">
-              Welcome back
+              {/* Welcome back */}
           </h1>
           <div 
             className="
@@ -57,6 +59,15 @@ export default async function Home() {
           <h1 className="text-white text-2xl font-semibold">
             Newest songs
           </h1>
+          <Button
+            className="w-auto"
+            // label="View all"
+            // onClick={() => router.push('/playlists')}
+          >
+            <Link href="/spotify/songs">
+                Submit Your Music
+            </Link>
+          </Button>
         </div>
         <PageContent songs={songs} spotifyTracks={spotifyTracks} />
         {/* <SpotifyTrackItem track={spotifyTracks[0]} /> */}
