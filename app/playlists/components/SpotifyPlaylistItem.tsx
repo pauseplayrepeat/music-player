@@ -20,7 +20,7 @@ const SpotifyPlaylistItem: React.FC<SpotifyTrackItemProps> = ({ playlist }) => {
     // Function to handle click event
     const handleClick = async () => {
         // Ensure track_url is not null or undefined before attempting to redirect
-        if (playlist.href) {
+        if (playlist) {
             // Increment click_count in the database
             try {
                 const { data, error: fetchError } = await supabaseClient
@@ -41,7 +41,7 @@ const SpotifyPlaylistItem: React.FC<SpotifyTrackItemProps> = ({ playlist }) => {
                 console.error('Error incrementing click count:', error);
             }
 
-            window.location.href = playlist.href; // Redirect to the track URL
+            window.location.href = playlist.spotify_url;
         }
     };
 
