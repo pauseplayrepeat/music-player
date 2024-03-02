@@ -18,7 +18,7 @@ import Library from "../components/Library"
 
 import { Song, SpotifyTrack } from "../types"
 import { AiOutlinePlus } from 'react-icons/ai';
-import { TbBuildingCommunity, TbDashboard } from 'react-icons/tb';
+import { TbBuildingCommunity, TbDashboard, TbPlaylist, TbPlaylistX } from 'react-icons/tb';
 import { RxDashboard } from 'react-icons/rx';
 import { BsMusicNoteList } from 'react-icons/bs';
 
@@ -52,17 +52,23 @@ const Sidebar: React.FC<SidebarProps> = ({children, spotifyTracks }) => {
                 href : '/dashboard',
             },
             {
-                icon: BiMusic,
-                label: 'Add Spotify Songs',
-                active: pathname === '/spotify/songs',
-                href : '/spotify/songs',
+                icon: TbPlaylist,
+                label: 'Playlists',
+                active: pathname === '/playlists',
+                href : '/playlists',
             },
-            {
-                icon: BsMusicNoteList,
-                label: 'Add Spotify Playlists',
-                active: pathname === '/spotify/playlists',
-                href : '/spotify/playlists',
-            },
+            // {
+            //     icon: BiMusic,
+            //     label: 'Add Spotify Songs',
+            //     active: pathname === '/spotify/songs',
+            //     href : '/spotify/songs',
+            // },
+            // {
+            //     icon: BsMusicNoteList,
+            //     label: 'Add Spotify Playlists',
+            //     active: pathname === '/spotify/playlists',
+            //     href : '/spotify/playlists',
+            // },
             {
                 icon: TbBuildingCommunity,
                 label: 'Community',
