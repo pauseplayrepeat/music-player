@@ -15,6 +15,7 @@ import MediaItem from '@/components/MediaItem';
 
 import { Song, SpotifyTrack } from '@/types'; 
 import SpotifyMediaItem from '@/app/spotify/components/SpotifyMediaItem';
+import { useRouter } from 'next/navigation';
 
 interface LibraryProps {
     // userSongs: Song[];
@@ -25,13 +26,16 @@ const Library: React.FC<LibraryProps> = ({ spotifyTracks }) => {
     const authModal = useAuthModal();
     const { user } = useUser();
     const uploadModal = useUploadModal();
+    const router = useRouter();
 
     const onClick = () => {
         if (!user) {
             authModal.onOpen();
         }
         // TODO: Check for subscription
-        return uploadModal.onOpen();
+        else {
+            router.push('/spotify/songs');
+        }
     };
 
   return (
