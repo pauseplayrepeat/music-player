@@ -87,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({
             <RxDashboard className="text-black" size={20} onClick={() => router.push('/dashboard')} />
           </button>
           <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
-            <AiOutlinePlus className="text-black" size={20} onClick={() => router.push('/spotify')} />
+            <AiOutlinePlus className="text-black" size={20} onClick={() => router.push('/spotify/songs')} />
           </button>
           <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
             <TbBuildingCommunity className="text-black" size={20} onClick={() => router.push('https://discord.gg/pauseplayrepeat')} />
