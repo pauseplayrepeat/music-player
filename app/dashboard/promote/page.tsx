@@ -7,16 +7,16 @@ import EmailButton from '../components/EmailButton';
 import Header from '@/components/Header';
 import Button from '@/components/Button';
 
-interface Props {
+interface PromotionProps {
     track: SpotifyTrack;
 }
 
-const PromotionPage = ({ track }: Props) => {
-    const router = useRouter();
+const PromotionPage = ({ }) => {
+    // const router = useRouter();
 
-    const handlePromote = () => {
-      router.push(`/dashboard/promote/${track.id}`);
-    };
+    // const handlePromote = () => {
+    //   router.push(`/dashboard/promote/${track.id}`);
+    // };
 
   // Fetch the track data using trackId
   // const track: SpotifyTrack = fetchTrackData(trackId);
@@ -35,7 +35,7 @@ const PromotionPage = ({ track }: Props) => {
     </Header>
       <h1>Promote Your Song</h1>
       {/* Pass the track data to the EmailButton component */}
-      <Button onClick={handlePromote}>Submit for promotion</Button>
+      {/* <Button onClick={handlePromote}>Submit for promotion</Button> */}
       {/* <EmailButton track={trackId} /> */}
     </div>
   );
