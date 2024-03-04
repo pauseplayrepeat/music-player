@@ -1,21 +1,22 @@
 "use client"
 
 import React from 'react';
-import { SpotifyTrack } from '@/types';
+import { SpotifyPlaylist, SpotifyTrack } from '@/types';
 import Button from '@/components/Button';
 import toast from 'react-hot-toast';
+import { MailPlus } from 'lucide-react';
 
 
 interface EmailButtonProps {
-  track: SpotifyTrack;
+  playlist: SpotifyPlaylist | null;
 }
 
-const EmailButton: React.FC<EmailButtonProps> = ({ track }) => {
+const EmailButton: React.FC<EmailButtonProps> = ({ playlist }) => {
     const handleClick = async () => {
       const response = await fetch('/api/emails', {
         method: 'POST',
         body: JSON.stringify({
-          track: track
+          track: playlist
         }),
       });
   
@@ -29,7 +30,7 @@ const EmailButton: React.FC<EmailButtonProps> = ({ track }) => {
   
     return (
       <Button onClick={handleClick}>
-        Send Email
+        <MailPlus />
       </Button>
     );
   };

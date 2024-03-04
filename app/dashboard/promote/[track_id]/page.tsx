@@ -1,34 +1,41 @@
+
+
 import { NextPageContext } from 'next';
 import Header from "@/components/Header";
 import { SpotifyPlaylist } from "@/types";
-import PlaylistDetails from "../components/PlaylistDetails";
-import getPlaylistById from "@/actions/getSpotifyPlaylistByPlaylistId";
+
+
 import Image from 'next/image';
 import Button from '@/components/Button';
 import Link from 'next/link';
-import MediaItem from '@/components/MediaItem';
-import PlaylistItem from '../components/PlaylistItem';
+import getSpotifyTracksByUserId from '@/actions/getSpotifyTracksByUserId';
+import getSpotifyTracks from '@/actions/getSpotifyTracks';
+import getTrackById from '@/actions/getSpotifyTracksByTrackId';
+import { useRouter } from 'next/navigation';
+import EmailButton from '../../components/EmailButton';
+import { DataTable, columns } from '../../components/PlaylistTable';
+import getSpotifyPlaylists from '@/actions/getSpotifyPlaylists';
 
-interface PlaylistIdPageProps {
+
+
+
+interface PromoteSongPageProps {
     params: {
-      playlist_id: string;
+      track_id: string;
     }
     // playlist: SpotifyPlaylist
 }
 
-interface SearchProps {
-    searchParams: {
-        title: string;
-    }
-};
 
-const PlaylistIdPage = async ({ params }: PlaylistIdPageProps) => {
-  const { playlist_id } = params
-  const playlist = await getPlaylistById(playlist_id);
+const PlaylistIdPage = async ({ params }: PromoteSongPageProps) => {
+  const { track_id } = params
+  const track = await getTrackById(track_id);
+  const playlists = await getSpotifyPlaylists();
+
    
-  if (!playlist) {
-     return <div className="flex justify-center items-center h-screen">Loading...</div>;
-  }
+//   if (!playlist) {
+//      return <div className="flex justify-center items-center h-screen">Loading...</div>;
+//   }
  
 //   return (
 //       <div 
@@ -66,12 +73,13 @@ return (
       </div>
     </Header>
     <div className="p-4">
-      <div className="flex items-center space-x-4">
-        <PlaylistItem playlist={playlist}/>
-
+        <div className="flex items-center space-x-4">
+          {/* {track?.song_title} */}
+          <DataTable columns={columns} data={playlists} /> {/* Pass columns and data to DataTable */}
+        </div>
+        {/* <EmailButton track={track} /> */}
       </div>
     </div>
-  </div>
 );
 }
 

@@ -2,7 +2,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { SpotifyTrack } from "../types";
 import { cookies } from "next/headers";
 
-const fetchTrackById = async (id: string): Promise<SpotifyTrack | null> => {
+const getTrackById = async (id: string): Promise<SpotifyTrack | null> => {
     console.log(`Fetching track with id: ${id}`); // Log the id parameter
 
     const supabase = createServerComponentClient({
@@ -26,4 +26,5 @@ const fetchTrackById = async (id: string): Promise<SpotifyTrack | null> => {
   return data;
 };
 
-export default fetchTrackById;
+export default getTrackById;
+

@@ -1,9 +1,12 @@
+"use client"
+
 import React from 'react';
 import { SpotifyTrack } from '@/types';
 import Image from 'next/image';
 import EmailButton from './EmailButton';
 import { useSessionContext } from '@supabase/auth-helpers-react';
 import { useRouter } from 'next/navigation';
+import Button from '@/components/Button';
 
 interface SpotifyTrackItemProps {
     track: SpotifyTrack;
@@ -11,7 +14,11 @@ interface SpotifyTrackItemProps {
 
 const SpotifyTrackUserItem: React.FC<SpotifyTrackItemProps> = ({ track }) => {
     // const { supabaseClient } = useSessionContext();
-    // const router = useRouter();
+    const router = useRouter();
+
+    const handlePromoteClick = () => {
+        router.push(`/dashboard/promote/${track.id}`);
+    };
 
     // Check if track is defined before attempting to access its properties
     if (!track) {
@@ -61,7 +68,7 @@ const SpotifyTrackUserItem: React.FC<SpotifyTrackItemProps> = ({ track }) => {
 
     return (
         <div 
-            className="relative flex group flex-col items-center justify-center rounded-md overflow-hidden gap-x-4 bg-neutral-900 p-3"
+            className="relative flex group flex-col items-center justify-center rounded-md overflow-hidden gap-x-4 bg-neutral-400/5 cursor-pointer hover:bg-neutral-400/10 transition p-3"
             // onClick={handleClick}
         >
             <div className="relative aspect-square w-full h-full rounded-md overflow-hidden">
@@ -80,7 +87,9 @@ const SpotifyTrackUserItem: React.FC<SpotifyTrackItemProps> = ({ track }) => {
                     by {track.artist_name}
                 </p>
             </div>
-            <EmailButton track={track} />
+            <Button onClick={handlePromoteClick}>
+                Promote Song
+            </Button>
         </div>
     );
 }
